@@ -1,6 +1,6 @@
 var Store = require("flux/utils").Store;
 var Dispatcher = require("../dispatcher/dispatcher.js");
-var PokemonConstants = require("../constants/PokemonConstants.js");
+var PokemonConstants = require("../constants/pokemonConstants.js");
 
 
 var _pokemons = {};
@@ -22,6 +22,10 @@ PokemonStore.__onDispatch = function(payload){
       break;
   }
 };
+
+PokemonStore.find = function(id){
+  return _pokemons[id];
+},
 
 PokemonStore.all = function(){
 
