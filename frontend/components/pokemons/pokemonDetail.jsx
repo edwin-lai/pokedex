@@ -27,7 +27,7 @@ var PokemonDetail = React.createClass({
   },
 
   getStateFromStore: function(){
-      return PokemonStore.find(parseInt(this.props.params.pokemonId));
+    return PokemonStore.find(parseInt(this.props.params.pokemonId));
   },
 
   render: function(){
@@ -36,7 +36,6 @@ var PokemonDetail = React.createClass({
     if(pokemon === undefined){
       return <div></div>;
     }
-
     return <div>
       <div className="pokemon-detail-pane">
         <div className="detail">
@@ -47,13 +46,14 @@ var PokemonDetail = React.createClass({
             <li>Attack: {pokemon.attack}</li>
             <li>Defense: {pokemon.defense}</li>
             <ul>Moves:
-              {pokemon.moves.map(function(move){
-                return <li>{move}</li>;
+              {pokemon.moves.map(function(move, idx){
+                return <li key={idx}>{move}</li>;
               })}
             </ul>
           </ul>
         </div>
       </div>
+      {this.props.children}
     </div>;
   }
 
